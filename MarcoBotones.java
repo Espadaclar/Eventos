@@ -13,6 +13,8 @@ public class MarcoBotones extends JFrame
         LaminaBotones lamina = new LaminaBotones();
         add(lamina);
         
+        
+        //Asigna mi icono en la ventana.
         Toolkit pantalla = Toolkit.getDefaultToolkit();
         Image icono = pantalla.getImage("icono2.gif");
         setIconImage(icono);
