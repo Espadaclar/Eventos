@@ -4,38 +4,43 @@ import java.awt.event.*;
 /**
  * @version (01 / 07 / 2017)
  */
-//EL OBJETO QUE RECIBE EL EVENTO IMPLEMENTA LA INTERFACE ActionListener
-public class LaminaBotones extends JPanel implements ActionListener
+public class LaminaBotones extends JPanel 
 {
-    //CREAMOS dos botones más
     JButton botonAzul = new JButton("Azul");
     JButton botonAmarillo = new JButton("Amarillo");
     JButton botonRojo = new JButton("Rojo");
+    
     public LaminaBotones(){
         //LOs AGREGAmos A LA LAMINA.
         add(botonAzul);
         add(botonAmarillo);
-        add(botonRojo);        
+        add(botonRojo);   
+        
+        //SE INSTANCIAN TRES OBJETOS DE LA CLASE INTERNA ColorDeFondo
+        ColorDeFondo azul = new ColorDeFondo(Color.blue);
+        ColorDeFondo rojo = new ColorDeFondo(Color.red);
+        ColorDeFondo amarillo = new ColorDeFondo(Color.yellow);
         // creamos tres objetos fuente botonAzul, botonAmarillo y botonRojo
-        // les decimos que van a desencadenar el evento addActionListener. es decir hacer click co el raton.
-        // siendo el objetoOyente 'this' es decir la lamina
+        // les decimos que van a desencadenar el evento addActionListener. es decir hacer click con el raton.
+        // siendo el objetoOyente cada una de las instancias del objeto ColorDeFondo.
         //CADA VEZ QUE CLIQUEAMOS, SE CREA UN OBJETO EVENTO QUE VIAJA AUTOMATICAMENTE AL PARAMETRO DEL MT
         // actionPerformed(ActionEvent e)
-        botonAzul.addActionListener(this);
-        botonAmarillo.addActionListener(this);
-        botonRojo.addActionListener(this);
-    }//para que el funcionamiento de los botones funcione hay que aplicar el mt 'getSource()' para que nos devuelva la fuente,
-    //el origen del evento, que boton es el que estamos clicando.
-    public void actionPerformed(ActionEvent e){
-        //variable para almacenar el boton que se cliquea.
-        Object botonPulsado = e.getSource();
-        if(botonPulsado == botonAzul){
-            setBackground(Color.BLUE);
-        }else if(botonPulsado == botonAmarillo){
-            setBackground(Color.YELLOW);
-        }else{
-            setBackground(Color.RED);
+        botonAzul.addActionListener(azul);
+        botonRojo.addActionListener(rojo);
+        botonAmarillo.addActionListener(amarillo);
+    }
+    
+    //CLASE INTERNA PARA REPRESENTAR AL OBJETO OYENTE
+    private class ColorDeFondo implements ActionListener{
+        private Color colorFondo;
+
+        public ColorDeFondo(Color color){
+            colorFondo = color;
         }
-    }    
+
+        public void actionPerformed(ActionEvent e){
+            setBackground(colorFondo);
+        }  
+    }
 }
 

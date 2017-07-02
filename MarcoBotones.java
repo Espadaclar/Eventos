@@ -12,7 +12,7 @@ public class MarcoBotones extends JFrame
         setBounds(700, 300, 500, 300);
         LaminaBotones lamina = new LaminaBotones();
         add(lamina);
-        
+        setTitle("Ventana de Eventos");
         
         //Asigna mi icono en la ventana.
         Toolkit pantalla = Toolkit.getDefaultToolkit();
