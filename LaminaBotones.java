@@ -7,35 +7,35 @@ import java.awt.event.*;
 //EL OBJETO QUE RECIBE EL EVENTO IMPLEMENTA LA INTERFACE ActionListener
 public class LaminaBotones extends JPanel implements ActionListener
 {
+    //CREAMOS dos botones más
+    JButton botonAzul = new JButton("Azul");
+    JButton botonAmarillo = new JButton("Amarillo");
+    JButton botonRojo = new JButton("Rojo");
     public LaminaBotones(){
-        //CREAMOS EL BOTON
-        JButton botonAzul = new JButton("Azul");
-        //LO AGREGA A LA LAMINA.
+        //LOs AGREGAmos A LA LAMINA.
         add(botonAzul);
-        //A partir de aquí, tenemos que plantearnos los tres factores
-        //1º que produce o desencadena la accion, ---hacer clikc en el boton
-        //2º quien la produce, -----el boton
-        //3º quien recibe la accion, ---la lamina que cambia de color
-        
-        //PARA QUE EL OBJETO FUENTE PUEDA REALIZAR UNA ACCION TENEMOS QUE UTILIZA EL MT 'addActionListener(_l_)'
-        //Y EN SU PARAMETRO TENEMOS QUE ESPECIFICAR QUIEN SERA EL OYENTE, en este caso es la propia clase.
-        //este parametro es de tipo ActionListener, y nos obliga a implementar la interface ActionListener.
-        botonAzul.addActionListener(this);//--decimos al boton que va ha desencadenar un evento de
-                                            // de tipo ActionListener y en el parametro quien lo va ha recibir
-    }
-
-    //al implementar la interface tenemos que sobreescribir sus mt, (solo tiene 1)
-    //el parametro nos pide un objeto de tipo Evento, ¿que evento tien lugar en este programa? 
-    // pues un evento de tipo ActionEvent, para el clikc del raton
+        add(botonAmarillo);
+        add(botonRojo);        
+        // creamos tres objetos fuente botonAzul, botonAmarillo y botonRojo
+        // les decimos que van a desencadenar el evento addActionListener. es decir hacer click co el raton.
+        // siendo el objetoOyente 'this' es decir la lamina
+        //CADA VEZ QUE CLIQUEAMOS, SE CREA UN OBJETO EVENTO QUE VIAJA AUTOMATICAMENTE AL PARAMETRO DEL MT
+        // actionPerformed(ActionEvent e)
+        botonAzul.addActionListener(this);
+        botonAmarillo.addActionListener(this);
+        botonRojo.addActionListener(this);
+    }//para que el funcionamiento de los botones funcione hay que aplicar el mt 'getSource()' para que nos devuelva la fuente,
+    //el origen del evento, que boton es el que estamos clicando.
     public void actionPerformed(ActionEvent e){
-        //que tiene que hacer este mt, que tiene que hacer el clikc del raton?
-        //poner la lamina en azul, luego
-        setBackground(Color.BLUE);
-    
-    }
-    
+        //variable para almacenar el boton que se cliquea.
+        Object botonPulsado = e.getSource();
+        if(botonPulsado == botonAzul){
+            setBackground(Color.BLUE);
+        }else if(botonPulsado == botonAmarillo){
+            setBackground(Color.YELLOW);
+        }else{
+            setBackground(Color.RED);
+        }
+    }    
 }
-
-
-
 
