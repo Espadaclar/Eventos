@@ -21,8 +21,7 @@ public class MarcoVentana extends JFrame
     }
 
     /**
-     * clase interna y clase oyente que implementa interface WindowListener para eventos de ventana.
-     * AL SER UNA INTERFACE TENEMOS QUE SOBREESCRIBIR  TODOS SUS MT.
+     * para no tener que sobreescribir todos los mt de la interface, heredamos de la clase adaptadora WindowAdapter.
      */
     private class M_marco extends WindowAdapter{
         public void windowIconified(WindowEvent e){
