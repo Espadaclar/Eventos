@@ -30,7 +30,16 @@ public class MarcoEstado extends JFrame
     private class CambiaEstado implements WindowStateListener
     {
         public void windowStateChanged(WindowEvent e){
-            System.out.println("La ventana ha cambiado de estado.");
+            //System.out.println("La ventana ha cambiado de estado.");
+            //getNewState() devuelve un nº entero que indica el estado de la ventana, Ver apuntes o api.
+            //-------------------------------------------------------System.out.println(e.getNewState());
+            //teniendo encuenta el valor que devolvera podemos ...poner alguna condicion.
+            if(e.getNewState() == MAXIMIZED_BOTH) {
+                System.out.println("Ha sido maximizada.");
+            }else if(e.getNewState() == NORMAL) {
+                System.out.println("Estado normal de la ventana.");
+            }
+            
         }
     }
 }
