@@ -6,6 +6,7 @@ import java.awt.event.*;
  */
 public class MarcoRaton extends JFrame
 {
+    
     public MarcoRaton()
     {
         setBounds(150, 100, 700, 400);
@@ -26,25 +27,12 @@ public class MarcoRaton extends JFrame
     private class RatonEvento extends MouseAdapter
     {
         // SE EJECUTA DESPUES DE PRESIONAR Y SOLTAR EL BOTON DEL RATON.
-        public void mouseClicked(MouseEvent e){
-            System.out.println("Clikc sobre el marco.");
+        public void mouseClicked(MouseEvent e){ 
+            System.out.println("Posicion del ejeX." +e.getX()+ " pixeles. \nPosicion del ejeY." +e.getY()+ " pixeles.");
+            System.out.println("Has realizado. " + e.getClickCount()+ " clikcs seguidos sobre el marco.");
+             System.out.println("____________________________________________");
         }        
-        //SE EJECUTA CUANDO EL BOTON DEL RATON ESTA PRESIONADO
-        public void mousePressed(MouseEvent e){
-            System.out.println("Boton del raton presionado.");
-        }        
-        //SE EJECUTA CUANDO EL BOTON DEL RATON DEJA DE ESTAR PRESIONADO
-        public void mouseReleased(MouseEvent e){
-            System.out.println("Acabas de levantar el dedo del boton del raton.");
-        }        
-        //SE EJECUTA CUANDO EL  RATON PASA SOBRE UN OBJETO DETERMINADO
-        public void mouseEntered(MouseEvent e){
-            System.out.println("Estas pasando el raton por el marco.");
-        }        
-        //SE EJECUTA CUANDO EL RATON DEJA DE PASAR SOBRE UN OBJETO DETERMINADO
-        public void mouseExited(MouseEvent e){
-            System.out.println("El raton ha salido del marco.");
-        }
+        
     }
 }
 
