@@ -26,7 +26,6 @@ public class MarcoRaton extends JFrame
     //CLASE INTERNA Y OYENTE PARA CREAR EL OBJETO OYENTE, EN VEZ DE IMPLEMENTAR LA INTERFACE UTILIZAMOS LA CLASE ADAPTADORA.
     private class RatonEvento implements MouseMotionListener
     {
-
         public void mouseDragged(MouseEvent e){
                 System.out.println("Has pulsado el boton izquierdo y estas seleccionando.");
         }
