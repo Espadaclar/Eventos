@@ -58,7 +58,7 @@ public class MarcoFoco extends JFrame
             // -----pues por ej; si ponemos la dirección de correo en uno de los cuadros incorrectamente, al cambiar el 
             // -----foco a otro lugar, que aparecca un mensaje de error. Para ello tenemos que programar dentro del mt el
             // -----codigo necesario para comprobar la direccion de correo.
-            
+
             //DESPUES DE HABER CREADO LA class LanzaFocos implements FocusListener, determinamos que cuadro de texto estara
             // a la escucha.
             LanzaFocos foco1 = new LanzaFocos();// ---instancia de la claseOyente
@@ -72,13 +72,34 @@ public class MarcoFoco extends JFrame
         private class LanzaFocos implements FocusListener{
             //cuando ocurre un evento de tipo 'focus' se construye un objeto de tipo FocusEvent, el cual se almacena
             //en el parametro de uno de los siguientes mts,
-            public void	focusGained(FocusEvent e){
+            public void focusGained(FocusEvent e){
                 
             }
 
-            public void	focusLost(FocusEvent e){
-                System.out.println("cuadro1 Has perdido el foco.");
+            public void focusLost(FocusEvent e){
+                //CAPTURAMOS EL TEXTO QUE SE ESCRIBE EN EL cuadro1
+                String email = cuadro1.getText();//almacena el texto escrito en el cuadro de texto.
+                boolean conArroba = false;
+                int contArrobas = 0;// --------- cuenta el nº de @ puestas en la direccion.
+                for(int i = 0; i < email.length(); i++){
+                    if(email.charAt(i) == '@'){
+                        conArroba = true;
+                        contArrobas ++;
+                    }
+                }
+                if(conArroba == true && contArrobas == 1){
+                    System.out.println("cuadro1 Has perdido el foco.");
+                }
+                else{
+                    System.out.println("Herror en la direccion de correo.");
+                }
             }
         }
     }
 }
+
+
+
+
+
+
