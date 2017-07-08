@@ -23,7 +23,7 @@ public class Apli_EventosDesdeVariasFuentes8 extends JFrame
     } 
 
     public Apli_EventosDesdeVariasFuentes8(){
-        
+
     }
 
     public void inicioDeFrame(){
@@ -42,9 +42,7 @@ public class Apli_EventosDesdeVariasFuentes8 extends JFrame
         vent1.setIconImage(imag);
 
     }
-    //     public void actionPerformed(ActionEvent e){
-    //         setBackground(colorFondo);
-    //     }
+   
 
     /**
      * CLASE INTERNA PARA CREAR UNA LAMINA SOBRE EL FRAME.
@@ -53,36 +51,51 @@ public class Apli_EventosDesdeVariasFuentes8 extends JFrame
 
         public Lamina(){
 
-            //anula la posicion por defecto que java da a todos los objetos dentro de la lamina.
-            setLayout(null);
-            //coordenadas y tamano para los botones.
-            boton1.setBounds(50, 50, 90, 20);
-            boton2.setBounds(50, 90, 90, 20);
-            boton3.setBounds(50, 130, 90, 20);
-            //anadimos los botones a la lamina.
-            add(boton1);
-            add(boton2);
-            add(boton3);
+            //INSTANCIAMOS LA CLASE QUE RECIBE EL OYENTE
+            ColorDeFondo accionAmarillo = new ColorDeFondo("Amarillo", new ImageIcon("../icono2.gif"), Color.YELLOW);
+            ColorDeFondo accionAZUL = new ColorDeFondo("Azul", new ImageIcon("../icono2.gif"), Color.BLUE);
+            ColorDeFondo accionRojo = new ColorDeFondo("Rojo", new ImageIcon("../icono2.gif"), Color.RED);
+            
+            //             //anula la posicion por defecto que java da a todos los objetos dentro de la lamina.
+            //             setLayout(null);
+            //             //coordenadas y tamano para los botones.
+            //             boton1.setBounds(50, 50, 90, 20);
+            //             boton2.setBounds(50, 90, 90, 20);
+            //             boton3.setBounds(50, 130, 90, 20);
+            //             //anadimos los botones a la lamina.
+            //             add(boton1);
+            //             add(boton2);
+            //             add(boton3);
 
             //RECORDEMOS¡¡¡ el objeto que recibe la accion es el que implemeta la interface ActionListener,
             //y en este caso es: Apli_EventosDesdeVariasFuentes8, la cual pide un color por parametro
             //instamciamos tres objetos de esta clase
-            ColorDeFondo azul = new  ColorDeFondo(Color.blue);
-            ColorDeFondo rojo = new ColorDeFondo(Color.red);
-            ColorDeFondo amarillo = new ColorDeFondo(Color.yellow);
-
-            boton1.addActionListener(azul);
-            boton2.addActionListener(rojo);
-            boton3.addActionListener(amarillo);
+            //             ColorDeFondo azul = new  ColorDeFondo(Color.blue);
+            //             ColorDeFondo rojo = new ColorDeFondo(Color.red);
+            //             ColorDeFondo amarillo = new ColorDeFondo(Color.yellow);
+            // 
+            //             boton1.addActionListener(azul);
+            //             boton2.addActionListener(rojo);
+            //             boton3.addActionListener(amarillo);
         }
         //CLASE INTERNA PARA REPRESENTAR AL OBJETO OYENTE, este objeto está a la escucha constantemente....¡¡¡¡¡¡¡¡¡
         //AL UTILIZAR VARIOS objetosFuente PARA REALIZAR UNA MISMA ACCION TENEMOS QUE UTILIZAR LA INTERFACE 'Action' o
         //HEREDAR DE LA CLASE 'AbastractAction'
+
         private class ColorDeFondo extends AbstractAction{
             private Color colorFondo;
-
-            public ColorDeFondo(Color color){
-                colorFondo = color;
+            
+            public ColorDeFondo(String nombre, Icon icono, Color color_boton){
+                //SE UTILIZA EL MT putValue(), y para almacenar el nombre, el icono y la descripcion se utiliza una constante
+                //estatica perteneciente a la interface Action, esta será la clave del mt putValue() y el valor sera el valor
+                // que demos al parametro en el constructor.
+                putValue(Action.NAME, nombre);
+                //PARA EL IONO OCURRE LO MISMO, TENEMOS OTRO CAMPO STATICO QUE SE UTILIZA PARA ALMACENAR ICONOS
+                putValue(Action.SMALL_ICON, icono);
+                //LA DESCRIPCION SERA DIFERENTE PARA CADA BOTON
+                putValue(Action.SHORT_DESCRIPTION, "Poner la lamina de color " +nombre);
+                //PARA LA ACCION DEL BOTON (la clave no el una cons statica, me la invento)
+                putValue("color_de_fondo", color_boton);
             }
 
             public void actionPerformed(ActionEvent e){
@@ -92,5 +105,10 @@ public class Apli_EventosDesdeVariasFuentes8 extends JFrame
     }
 }
 
-
-
+/**
+             * Para empezar a programar, 1º pensar en la información que nos interesa guardar del objetoFuente cuando
+             * se cree el evento, en este caso guardamos, el nombre, un icono que represente al botón, una descripción
+             * y la acción que realiza. Para qué? Para que cuando quiera poner el nombre del botón, lo ponga el programa. 
+             * Igualmente con el icono, la descripcion saldrá cuando posemos el ratón sobre el botón. Y la accion
+             * pasamos al constructor todos estos datos.
+             */
