@@ -20,7 +20,7 @@ public class LaminaBotones extends JPanel
         ColorDeFondo azul = new ColorDeFondo(Color.blue);
         ColorDeFondo rojo = new ColorDeFondo(Color.red);
         ColorDeFondo amarillo = new ColorDeFondo(Color.yellow);
-        // creamos tres objetos fuente botonAzul, botonAmarillo y botonRojo
+        // creamos tres objetos fuente  como atributos botonAzul, botonAmarillo y botonRojo
         // les decimos que van a desencadenar el evento addActionListener. es decir hacer click con el raton.
         // siendo el objetoOyente cada una de las instancias del objeto ColorDeFondo.
         //CADA VEZ QUE CLIQUEAMOS, SE CREA UN OBJETO EVENTO QUE VIAJA AUTOMATICAMENTE AL PARAMETRO DEL MT

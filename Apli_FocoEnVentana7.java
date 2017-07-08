@@ -19,14 +19,6 @@ public class Apli_FocoEnVentana7 extends JFrame implements WindowFocusListener
          Apli_FocoEnVentana7 miv = new Apli_FocoEnVentana7();
         miv.iniciar();
     }
-
-    /**
-     * Constructor for objects of class Apli_FocoEnVentana7
-     */
-    public Apli_FocoEnVentana7()
-    {
-       
-    }
     
     /**
      * crea varias ventanas
