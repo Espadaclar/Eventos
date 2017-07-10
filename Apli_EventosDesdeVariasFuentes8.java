@@ -9,18 +9,17 @@ import java.awt.*;
 public class Apli_EventosDesdeVariasFuentes8 extends JFrame 
 
 {
-
     private Apli_EventosDesdeVariasFuentes8 vent1;
-
     private Color colorFondo;
-    public static void main(String[] args){
-        Apli_EventosDesdeVariasFuentes8 miv = new Apli_EventosDesdeVariasFuentes8();
-        miv.inicioDeFrame();
-    } 
 
     public Apli_EventosDesdeVariasFuentes8(){
 
     }
+    
+    public static void main(String[] args){
+        Apli_EventosDesdeVariasFuentes8 miv = new Apli_EventosDesdeVariasFuentes8();
+        miv.inicioDeFrame();
+    } 
 
     public void inicioDeFrame(){
         vent1 = new Apli_EventosDesdeVariasFuentes8();
@@ -44,12 +43,12 @@ public class Apli_EventosDesdeVariasFuentes8 extends JFrame
      */
     private class Lamina extends JPanel{
         public Lamina(){
-            //INSTANCIAMOS LA CLASE QUE RECIBE EL OYENTE
+            //INSTANCIAMOS LA CLASE QUE RECIBE EL OYENTE 'BOTON'
             ColorDeFondo accionAmarillo = new ColorDeFondo("Amarillo", new ImageIcon("../am.png"), Color.YELLOW);
             ColorDeFondo accionAzul = new ColorDeFondo("Azul", new ImageIcon("../a.png"), Color.BLUE);
             ColorDeFondo accionRojo = new ColorDeFondo("Rojo", new ImageIcon("../r.png"), Color.RED);
 
-            //ANADIMOS TRES OBJETOS BOTON A LA LAMINA UTILIZANDO DE CONSTRUCTOR 'JButton(Action a)' EL CUAL PIDE UN
+            //ANADIMOS TRES OBJETOS BOTON A LA LAMINA UTILIZANDO EL CONSTRUCTOR 'JButton(Action a)' EL CUAL PIDE UN
             //PARAMETRO DE TIPO 'Action' ---
             JButton boton1 = new JButton(accionAmarillo);
             JButton boton2 = new JButton(accionAzul);
@@ -64,6 +63,27 @@ public class Apli_EventosDesdeVariasFuentes8 extends JFrame
             add(boton1);
             add(boton2);
             add(boton3);
+            
+            //PASOSO A SEGUIR PARA QUE FUNCIONE LA COMBINACIÓN DE TECLAS ---- OYENTE SERA LA TECLA
+            //1, crear mapa de entrada, 
+            //getInputMap()de la clase JComponent, utiliza como argumento una constante de clase 'WHEN_IN_FOCUSED_WINDOW'
+            InputMap mapaEntrada = getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);//
+            // 2, crear combinación de teclas, le damos un nombre a la combincion.
+            KeyStroke teclaAmarilla = KeyStroke.getKeyStroke("ctrl A");
+            // 3, asignar combinación de teclas a objeto, crea un vinculo entre las teclas y
+            //un objeto, para ello utizamos el mt de la clse InputMap y el 
+            //nombre de variable que tenemos en el paso 1 y a continuacion el mt put(_keyStroke_, _actionMapKey_)
+            //---keyStroke es el objeto de la combinacion de teclas que acabo de crear en 2, y actionMapKey 
+            //el objeto a quien le asigno la accion.
+            mapaEntrada.put(teclaAmarilla, "fondo_amarillo");
+            //4, asigar objeto a acción.
+            //creamos una instancia de la clase ActionMap (es un mapa de accion) y aplicamos el mt put(_key_, _action_) 
+            ActionMap mapaAction = getActionMap();
+            //****como asigno ahora el objeto que hemos creado antes, llamado 'fondo_amarillo' con la accion que
+            //ya hemos creado antes 'accionAmarillo'?  con el mt put de la cl ActionMap.
+            //'key'--objeto que hemos creado hace un instante fondo_amarillo
+            // y por otro lado la accion que la tenemos arriba 'accionAmarillo'
+            mapaAction.put("fondo_amarillo", accionAmarillo);
         }
         //CLASE INTERNA PARA REPRESENTAR AL OBJETO OYENTE, este objeto está a la escucha constantemente....¡¡¡¡¡¡¡¡¡
         //AL UTILIZAR VARIOS objetosFuente PARA REALIZAR UNA MISMA ACCION TENEMOS QUE UTILIZAR LA INTERFACE 'Action' o
@@ -100,7 +120,10 @@ public class Apli_EventosDesdeVariasFuentes8 extends JFrame
                 //ALMACENA EL VALOR DE LA CLAVE EN UNA VARIABLE DE TIPO COLOR
                 Color color = (Color)getValue("color_de_fondo");
                 setBackground(color);
+                //obtiene mas datos de los objetos.
+                //System.out.println("Nombre: " +getValue(Action.NAME)+ "\nDescripcion: " +getValue(Action.SHORT_DESCRIPTION));
             }  
+
         }
     }
 }
