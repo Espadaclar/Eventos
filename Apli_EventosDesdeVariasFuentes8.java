@@ -84,6 +84,14 @@ public class Apli_EventosDesdeVariasFuentes8 extends JFrame
             //'key'--objeto que hemos creado hace un instante fondo_amarillo
             // y por otro lado la accion que la tenemos arriba 'accionAmarillo'
             mapaAction.put("fondo_amarillo", accionAmarillo);
+            
+            //****** PONEMOS EL RESTO DE TECLAS EN FUNCIONAMIENTO.
+            KeyStroke teclaAzul = KeyStroke.getKeyStroke("ctrl B");
+            KeyStroke teclaRoja = KeyStroke.getKeyStroke("ctrl R");
+            mapaEntrada.put(teclaAzul, "fondo_azul");
+            mapaEntrada.put(teclaRoja, "fondo_rojo");
+            mapaAction.put("fondo_azul", accionAzul);
+            mapaAction.put("fondo_rojo", accionRojo);
         }
         //CLASE INTERNA PARA REPRESENTAR AL OBJETO OYENTE, este objeto está a la escucha constantemente....¡¡¡¡¡¡¡¡¡
         //AL UTILIZAR VARIOS objetosFuente PARA REALIZAR UNA MISMA ACCION TENEMOS QUE UTILIZAR LA INTERFACE 'Action' o
