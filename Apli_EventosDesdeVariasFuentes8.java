@@ -15,7 +15,7 @@ public class Apli_EventosDesdeVariasFuentes8 extends JFrame
     public Apli_EventosDesdeVariasFuentes8(){
 
     }
-    
+
     public static void main(String[] args){
         Apli_EventosDesdeVariasFuentes8 miv = new Apli_EventosDesdeVariasFuentes8();
         miv.inicioDeFrame();
@@ -63,40 +63,27 @@ public class Apli_EventosDesdeVariasFuentes8 extends JFrame
             add(boton1);
             add(boton2);
             add(boton3);
-            
             //PASOSO A SEGUIR PARA QUE FUNCIONE LA COMBINACIÓN DE TECLAS ---- OYENTE SERA LA TECLA
             //1, crear mapa de entrada, 
-            //getInputMap()de la clase JComponent, utiliza como argumento una constante de clase 'WHEN_IN_FOCUSED_WINDOW'
             InputMap mapaEntrada = getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);//
             // 2, crear combinación de teclas, le damos un nombre a la combincion.
-            KeyStroke teclaAmarilla = KeyStroke.getKeyStroke("ctrl A");
-            // 3, asignar combinación de teclas a objeto, crea un vinculo entre las teclas y
-            //un objeto, para ello utizamos el mt de la clse InputMap y el 
-            //nombre de variable que tenemos en el paso 1 y a continuacion el mt put(_keyStroke_, _actionMapKey_)
-            //---keyStroke es el objeto de la combinacion de teclas que acabo de crear en 2, y actionMapKey 
-            //el objeto a quien le asigno la accion.
-            mapaEntrada.put(teclaAmarilla, "fondo_amarillo");
+            //---KeyStroke teclaAmarilla = KeyStroke.getKeyStroke("ctrl A");
+            // El objeto KeyStroke teclaAmarilla lo creamos directamente en el parametro de 
+            // //mapaEntrada.put(KeyStroke.getKeyStroke("ctrl A"), "fondo_amarillo");
+            mapaEntrada.put(KeyStroke.getKeyStroke("ctrl A"), "fondo_amarillo");
+            mapaEntrada.put(KeyStroke.getKeyStroke("ctrl B"), "fondo_azul");
+            mapaEntrada.put(KeyStroke.getKeyStroke("ctrl R"), "fondo_rojo");
             //4, asigar objeto a acción.
             //creamos una instancia de la clase ActionMap (es un mapa de accion) y aplicamos el mt put(_key_, _action_) 
             ActionMap mapaAction = getActionMap();
-            //****como asigno ahora el objeto que hemos creado antes, llamado 'fondo_amarillo' con la accion que
-            //ya hemos creado antes 'accionAmarillo'?  con el mt put de la cl ActionMap.
-            //'key'--objeto que hemos creado hace un instante fondo_amarillo
-            // y por otro lado la accion que la tenemos arriba 'accionAmarillo'
-            mapaAction.put("fondo_amarillo", accionAmarillo);
             
-            //****** PONEMOS EL RESTO DE TECLAS EN FUNCIONAMIENTO.
-            KeyStroke teclaAzul = KeyStroke.getKeyStroke("ctrl B");
-            KeyStroke teclaRoja = KeyStroke.getKeyStroke("ctrl R");
-            mapaEntrada.put(teclaAzul, "fondo_azul");
-            mapaEntrada.put(teclaRoja, "fondo_rojo");
+            mapaAction.put("fondo_amarillo", accionAmarillo);
             mapaAction.put("fondo_azul", accionAzul);
             mapaAction.put("fondo_rojo", accionRojo);
         }
         //CLASE INTERNA PARA REPRESENTAR AL OBJETO OYENTE, este objeto está a la escucha constantemente....¡¡¡¡¡¡¡¡¡
         //AL UTILIZAR VARIOS objetosFuente PARA REALIZAR UNA MISMA ACCION TENEMOS QUE UTILIZAR LA INTERFACE 'Action' o
         //HEREDAR DE LA CLASE 'AbastractAction'
-
         private class ColorDeFondo extends AbstractAction{
             /**
              * Para empezar a programar, 1º pensar en la información que nos interesa guardar del objetoFuente cuando
@@ -118,6 +105,7 @@ public class Apli_EventosDesdeVariasFuentes8 extends JFrame
                 //PARA LA ACCION DEL BOTON (la clave no el una cons statica, me la invento)
                 putValue("color_de_fondo", color_boton);
             }
+
             /**
              * decimos al programa lo que tiene que hacer cuando seam pulsados los botones. DATO¡¡¡
              * cuano pulsamos un boton se construye un objeto, EN ESE OBJETO HEMOS GUARDADO CUATRO PARES 
@@ -135,13 +123,6 @@ public class Apli_EventosDesdeVariasFuentes8 extends JFrame
         }
     }
 }
-
-
-
-
-
-
-
 
 
 
