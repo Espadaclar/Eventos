@@ -63,23 +63,30 @@ public class Apli_EventosDesdeVariasFuentes8 extends JFrame
             add(boton1);
             add(boton2);
             add(boton3);
+            
             //PASOSO A SEGUIR PARA QUE FUNCIONE LA COMBINACIÓN DE TECLAS ---- OYENTE SERA LA TECLA
-            //1, crear mapa de entrada, 
-            InputMap mapaEntrada = getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);//
-            // 2, crear combinación de teclas, le damos un nombre a la combincion.
-            //---KeyStroke teclaAmarilla = KeyStroke.getKeyStroke("ctrl A");
-            // El objeto KeyStroke teclaAmarilla lo creamos directamente en el parametro de 
-            // //mapaEntrada.put(KeyStroke.getKeyStroke("ctrl A"), "fondo_amarillo");
+            //**** 1º, crear mapa de entrada,
+            InputMap mapaEntrada = getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);// -- WHEN_IN_FOCUSED_WINDOW indica
+            //         que el centro del foco se encuentra dentro de la lamina
+            //**** 2º, crear combinación de teclas, le damos un nombre a la combincion.
+            //         KeyStroke teclaAmarilla = KeyStroke.getKeyStroke("ctrl A");
+            //         este paso lo hacemos directamene dentro del parametro de paso nº 3.
+            //**** 3º  asignar combinación de teclas a objeto
             mapaEntrada.put(KeyStroke.getKeyStroke("ctrl A"), "fondo_amarillo");
             mapaEntrada.put(KeyStroke.getKeyStroke("ctrl B"), "fondo_azul");
             mapaEntrada.put(KeyStroke.getKeyStroke("ctrl R"), "fondo_rojo");
-            //4, asigar objeto a acción.
-            //creamos una instancia de la clase ActionMap (es un mapa de accion) y aplicamos el mt put(_key_, _action_) 
+            //**** 4º asigar objeto a acción.
             ActionMap mapaAction = getActionMap();
-            
             mapaAction.put("fondo_amarillo", accionAmarillo);
             mapaAction.put("fondo_azul", accionAzul);
             mapaAction.put("fondo_rojo", accionRojo);
+            
+            //-------******DATO!!!!!VETAJA DE ESTE CODIGO
+            //SE PUEDE DAR EL MISMO USO QUE TIENE UNA TECLA A VARIAS MAS FACILMENTE.
+            //ej; "ctrl 1" "ctrl 9" y "ctrl w" tambien ponen la lamina en azul.
+            mapaEntrada.put(KeyStroke.getKeyStroke("ctrl 1"), "fondo_azul");
+            mapaEntrada.put(KeyStroke.getKeyStroke("ctrl 2"), "fondo_azul");
+            mapaEntrada.put(KeyStroke.getKeyStroke("ctrl W"), "fondo_azul");
         }
         //CLASE INTERNA PARA REPRESENTAR AL OBJETO OYENTE, este objeto está a la escucha constantemente....¡¡¡¡¡¡¡¡¡
         //AL UTILIZAR VARIOS objetosFuente PARA REALIZAR UNA MISMA ACCION TENEMOS QUE UTILIZAR LA INTERFACE 'Action' o
@@ -102,7 +109,7 @@ public class Apli_EventosDesdeVariasFuentes8 extends JFrame
                 putValue(Action.SMALL_ICON, icono);
                 //LA DESCRIPCION SERA DIFERENTE PARA CADA BOTON
                 putValue(Action.SHORT_DESCRIPTION, "Poner la lamina de color " +nombre);
-                //PARA LA ACCION DEL BOTON (la clave no el una cons statica, me la invento)
+                //PARA LA ACCION DEL BOTON (la clave no es una cons statica, me la invento)
                 putValue("color_de_fondo", color_boton);
             }
 
