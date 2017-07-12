@@ -9,7 +9,7 @@ public class MarcoBotones extends JFrame
 
     public MarcoBotones()
     {
-        setBounds(700, 300, 500, 300);
+        setBounds(700, 300, 500, 100);
         LaminaBotones lamina = new LaminaBotones();
         add(lamina);
         setTitle("Ventana de Eventos");

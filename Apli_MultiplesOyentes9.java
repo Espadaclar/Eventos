@@ -10,7 +10,9 @@ import java.awt.event.*;
  */
 public class Apli_MultiplesOyentes9 extends JFrame
 {
+    // JButton cerrar = new JButton("Cerrar todo");
     //PARA QUE JAVA EJECUTE EL PROGRAMA.
+    
     public static void main(String[] args){
         Apli_MultiplesOyentes9 marco = new Apli_MultiplesOyentes9();
         marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -21,13 +23,13 @@ public class Apli_MultiplesOyentes9 extends JFrame
      */
     public Apli_MultiplesOyentes9()
     {
+        Lamina lamina = new Lamina();
+        add(lamina);
+        
         setBounds(800, 30, 500, 200);
         setVisible(true);
         setTitle("Dos botones");
-        
         //instanciamos la Lamina
-        Lamina lamina = new Lamina();
-        add(lamina);
         
         Toolkit icono = Toolkit.getDefaultToolkit();
         Image imagen = icono.getImage("../icono2.gif");
@@ -39,39 +41,26 @@ public class Apli_MultiplesOyentes9 extends JFrame
     {
         JButton nuevo = new JButton("Nueva");
         JButton cerrar = new JButton("Cerrar todo");
-        
         public Lamina(){
             add(nuevo);
             add(cerrar);
             setLayout(null);
             nuevo.setBounds(350, 10, 105, 25);
             cerrar.setBounds(350, 40, 105, 25);
-            
             //realiza el evento codificado en actionPerformed(ActionEvent e) cuando es pulsado el boton 'Nueva'
             Oyente oyente = new Oyente();
             nuevo.addActionListener(oyente);
         }
-        
+
         //CLASE INTERNA PARA CREAR UN OBJETO OYENTE
         private class Oyente implements ActionListener{
-        
+
             public void actionPerformed(ActionEvent e){
-               Crea_Ventana ventana = new Crea_Ventana();
+                Crea_Ventana ventana = new Crea_Ventana(cerrar);
             }
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
